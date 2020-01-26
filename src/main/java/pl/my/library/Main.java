@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         //ustawienie lokalizacji
-        Locale.setDefault(new Locale("en"));
+        Locale.setDefault(new Locale("pl"));
 
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/BorderPaneMain.fxml"));
 
