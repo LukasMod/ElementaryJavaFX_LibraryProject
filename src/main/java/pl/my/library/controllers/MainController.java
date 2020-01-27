@@ -6,12 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pl.my.library.dialogs.DialogsUtils;
 
 import java.io.IOException;
 import java.util.EventObject;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController {
@@ -62,11 +65,16 @@ public class MainController {
     }
 
     public void about(ActionEvent event) {
+        DialogsUtils.dialogAboutApplication();
     }
 
 
     public void closeApplication() {
-        Platform.exit();
-        System.exit(0);
+       Optional<ButtonType> result = DialogsUtils.confirmationDialog(); //ładuje dialog window
+       if(result.get() == ButtonType.OK);{ //reakcja na OK - wyłączenie
+            Platform.exit();
+            System.exit(0);
+        }
+
     }
 }
