@@ -21,7 +21,6 @@ public class DialogsUtils {
         informationAlert.showAndWait();
     }
 
-
     public static Optional<ButtonType> confirmationDialog() {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle(bundle.getString("exit.title"));
@@ -40,7 +39,6 @@ public class DialogsUtils {
 
        // Możemy wstawić w okno dialogowe co zechcemy (Node). Np ponownie formatkę
       //  errorAlert.getDialogPane().setContent(FxmlUtils.fxmlLoader("/fxml/BorderPaneMain.fxml"));
-
 
         errorAlert.showAndWait();
     }
