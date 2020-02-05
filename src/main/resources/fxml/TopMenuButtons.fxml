@@ -10,7 +10,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.my.library.controllers.TopMenuButtonsController">
    <children>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openLibrary" prefHeight="80.0" prefWidth="150.0" text="%library">
+      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openLibrary" prefHeight="80.0" prefWidth="120.0" text="%library">
          <toggleGroup>
             <ToggleGroup fx:id="toggleButtons" />
          </toggleGroup>
@@ -21,7 +21,7 @@
                </image>
             </ImageView>
          </graphic></ToggleButton>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openListBooks" prefHeight="80.0" prefWidth="150.0" text="%list.books" toggleGroup="$toggleButtons">
+      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openListBooks" prefHeight="80.0" prefWidth="120.0" text="%list.books" toggleGroup="$toggleButtons">
          <graphic>
             <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,7 +29,7 @@
                </image>
             </ImageView>
          </graphic></ToggleButton>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openStats" prefHeight="80.0" prefWidth="150.0" text="%stats" toggleGroup="$toggleButtons">
+      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openStats" prefHeight="80.0" prefWidth="120.0" text="%stats" toggleGroup="$toggleButtons">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,11 +37,27 @@
                </image>
             </ImageView>
          </graphic></ToggleButton>
-      <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBook" prefHeight="80.0" prefWidth="150.0" text="%addBook">
+      <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBook" prefHeight="80.0" prefWidth="120.0" text="%addBook">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/addBook.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addCategory" prefHeight="80.0" prefWidth="120.0" text="%add.category">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/list.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addAuthor" prefHeight="80.0" prefWidth="120.0" text="Add Author">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/pencil.png" />
                </image>
             </ImageView>
          </graphic></Button>

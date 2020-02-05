@@ -1,5 +1,6 @@
 package pl.my.library.datbase.dbutils;
 
+import com.j256.ormlite.db.H2DatabaseType;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.logger.Logger;
 import com.j256.ormlite.logger.LoggerFactory;
@@ -16,7 +17,7 @@ public class DbManager {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(DbManager.class);
 
-    private static final String JDBC_DRIVER_HD = "jdbc:H2:./libraryDB";
+    private static final String JDBC_DRIVER_HD = "jdbc:h2:./libraryDB";
     private static final String USER = "admin";
     private static final String PASS = "admin";
 
