@@ -10,20 +10,22 @@ import java.util.Date;
 
 public class Book implements BaseModel {
 
+
     //bezparametrowy konstruktor Alt+Insert
     public Book() {
     }
 
     // TWORZYMY POLE OBCE
-    @DatabaseField(columnName = "AUTHOR_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true)
+    @DatabaseField(columnName = "AUTHOR_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
     private Author author;
+
+    @DatabaseField(columnName = "CATEGORY_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
+    private Category category;
+
     //utworzy się kolumna z nazwą author_id. Lepiej nazwąć jawną naze, aby uniknąć pomyłek
     //foreignAutoCreate - pomagają w obsłudze
     //foreignAutoRefresh - pomagają w obsłudze
 
-    //ID w tabeli (niepowtarzające się)
-    @DatabaseField(generatedId = true)
-    private int id;
 
     @DatabaseField(columnName = "TITLE", canBeNull = false) //nigdy nie może być nullem
     private String title;
@@ -40,7 +42,6 @@ public class Book implements BaseModel {
     @DatabaseField(columnName = "RATING", width = 1)
     //maksymalna ilość znaków (nie działa np. na sqlite, ale na h2 działa)
     private String rating;
-
 
 
     @DatabaseField(columnName = "ADDED_DATE")
@@ -118,13 +119,6 @@ public class Book implements BaseModel {
 //        this.price = price;
 //    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Author getAuthor() {
         return author;
@@ -134,19 +128,11 @@ public class Book implements BaseModel {
         this.author = author;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "author=" + author +
-                ", id=" + id +
-                ", title='" + title + '\'' +
-//                ", description='" + description + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", addedDate=" + addedDate +
-                ", releaseDate=" + releaseDate +
-                ", rating='" + rating + '\'' +
-//                ", borrowed=" + borrowed +
-//                ", price=" + price +
-                '}';
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

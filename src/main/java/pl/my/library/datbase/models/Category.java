@@ -14,10 +14,11 @@ public class Category implements BaseModel{
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(columnName = "NAME", canBeNull = false)
-    private String nameAndSurname;
+    @DatabaseField(columnName = "NAME", canBeNull = false, unique = true)
+    private String name;
 
-    @ForeignCollectionField(eager = true) //eager - zmiana pobierania z leniwego 'lazy' na eager.
+    @ForeignCollectionField(columnName = "BOOK_ID")
+    //eager - zmiana pobierania z leniwego 'lazy' na eager.
     //od razu będzie dociąga całą kolekcję, w trybie lazy będzie czekał na konkretne zapytanie
     private ForeignCollection<Book> books;
 
@@ -30,12 +31,12 @@ public class Category implements BaseModel{
         this.id = id;
     }
 
-    public String getNameAndSurname() {
-        return nameAndSurname;
+    public String getName() {
+        return name;
     }
 
-    public void setNameAndSurname(String name) {
-        this.nameAndSurname = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ForeignCollection<Book> getBooks() {
@@ -46,12 +47,4 @@ public class Category implements BaseModel{
         this.books = books;
     }
 
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", name='" + nameAndSurname + '\'' +
-                ", books=" + books +
-                '}';
-    }
 }

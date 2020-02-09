@@ -25,14 +25,15 @@ public class DbManager {
 
     public static void initDatabase() {
         createConnectionSource(); //tworzy połączenie
-        dropTable();  //usuwa tabelę
+       // dropTable();  //usuwa tabelę
         createTable(); //tworzy tabelę
         closeConnectionSource();
+
     }
 
     private static void createConnectionSource() {
         try {
-            connectionSource = new JdbcConnectionSource(JDBC_DRIVER_HD, USER, PASS);
+            connectionSource = new JdbcConnectionSource(JDBC_DRIVER_HD,USER,PASS);
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
         }

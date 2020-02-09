@@ -6,30 +6,32 @@ import com.j256.ormlite.logger.Logger;
 import com.j256.ormlite.logger.LoggerFactory;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
+import pl.my.library.datbase.dbutils.DbManager;
 import pl.my.library.datbase.models.BaseModel;
-//import pl.ormlite.example.Model.BaseModel;
+import pl.my.library.utils.FxmlUtils;
 
 import java.sql.SQLException;
 import java.util.List;
 
+//import pl.ormlite.example.Model.BaseModel;
+
 public abstract class CommonDao {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(CommonDao.class);
-
     protected final ConnectionSource connectionSource;
 
-    public CommonDao(ConnectionSource connectionSource) {
-        this.connectionSource = connectionSource;
+    public CommonDao() {
+        this.connectionSource = DbManager.getConnectionSource();
     }
 
 
     //do tworzenia obiektów
     public <T extends BaseModel, I> void createOrUpdate(BaseModel baseModel) {
-        Dao<T, I> dao = getDao((Class<T>) baseModel.getClass()); //tworzymy Dao
+        Dao<T, I> dao = getDao((Class<T>) baseModel.getClass());
         try {
             dao.createOrUpdate((T) baseModel);
         } catch (SQLException e) {
-            LOGGER.warn(e.getMessage());
+            LOGGER.warn(e.getCause().getMessage());
         }
     }
 
@@ -47,6 +49,15 @@ public abstract class CommonDao {
         Dao<T, I> dao = getDao((Class<T>) baseModel.getClass());
         try {
             dao.delete((T) baseModel);
+        } catch (SQLException e) {
+            LOGGER.warn(e.getMessage());
+        }
+    }
+
+    public <T extends BaseModel, I> void deleteById(Class<T> cls, Integer id) {
+        try {
+            Dao<T, I> dao = getDao(cls);
+            dao.deleteById((I) id);
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
         }
