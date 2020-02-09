@@ -64,6 +64,17 @@ public abstract class CommonDao {
     }
 
 
+    public <T extends BaseModel, I> T findById(Class<T> cls, Integer id) {
+        try {
+            Dao<T, I> dao = getDao(cls);
+          return  dao.queryForId((I) id);
+        } catch (SQLException e) {
+            LOGGER.warn(e.getMessage());
+        }
+        return null;
+    }
+
+
     public <T extends BaseModel, I> List<T> queryForAll(Class<T> cls) {
 
         try {

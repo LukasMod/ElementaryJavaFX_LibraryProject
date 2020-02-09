@@ -81,4 +81,15 @@ public class CategoryModel {
 
     }
 
+    public void updateCategoryInDataBase() {
+
+        CategoryDao categoryDao = new CategoryDao();
+        Category tempCategory = categoryDao.findById(Category.class, getCategoryFXObjectProperty().getId());
+        tempCategory.setName(getCategoryFXObjectProperty().getName());
+        categoryDao.createOrUpdate(tempCategory);
+        DbManager.closeConnectionSource();
+        init();
+
+
+    }
 }
