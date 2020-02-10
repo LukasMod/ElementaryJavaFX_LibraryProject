@@ -15,6 +15,7 @@ public class Category implements BaseModel{
     private int id;
 
     @DatabaseField(columnName = "NAME", canBeNull = false, unique = true)
+    //unique - tylko unikatowe wyniki
     private String name;
 
     @ForeignCollectionField(columnName = "BOOK_ID")

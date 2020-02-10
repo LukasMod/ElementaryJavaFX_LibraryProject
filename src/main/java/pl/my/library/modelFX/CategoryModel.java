@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import pl.my.library.datbase.dao.CategoryDao;
 import pl.my.library.datbase.dbutils.DbManager;
 import pl.my.library.datbase.models.Category;
+import pl.my.library.utils.exceptions.ApplicationException;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class CategoryModel {
     }
 
     //metoda wypełniająca categoryFXObservableList
-    public void init() {
+    public void init() throws ApplicationException {
         //połączenie do bazy danych
         CategoryDao categoryDao = new CategoryDao();
         //dodaj do list CategoryList  wszystkie kategore jakie są w bazie danych
@@ -60,7 +61,7 @@ public class CategoryModel {
         DbManager.closeConnectionSource();
     }
 
-    public void deleteCategoryByID() {
+    public void deleteCategoryByID() throws ApplicationException {
         CategoryDao categoryDao = new CategoryDao(); //połączenie z bazą danych
         categoryDao.deleteById(Category.class, categoryFXObjectProperty.getValue().getId()); //usuwa z bazy danych
         DbManager.closeConnectionSource();
@@ -68,7 +69,7 @@ public class CategoryModel {
     }
 
 
-    public void saveCategoryInDataBase(String name) {
+    public void saveCategoryInDataBase(String name) throws ApplicationException {
         //zapis do bazy danych
         //stworzenie kategorii i zapisanie jej do bazy danych
 
@@ -81,7 +82,7 @@ public class CategoryModel {
 
     }
 
-    public void updateCategoryInDataBase() {
+    public void updateCategoryInDataBase() throws ApplicationException {
 
         CategoryDao categoryDao = new CategoryDao();
         Category tempCategory = categoryDao.findById(Category.class, getCategoryFXObjectProperty().getId());

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import pl.my.library.modelFX.CategoryFX;
 import pl.my.library.modelFX.CategoryModel;
 import pl.my.library.utils.DialogsUtils;
+import pl.my.library.utils.exceptions.ApplicationException;
 
 public class CategoryController {
 
@@ -27,7 +28,11 @@ public class CategoryController {
     @FXML
     public void initialize() {
         this.categoryModel = new CategoryModel();
-        this.categoryModel.init(); //inicjalizacja listy w ComboBox
+        try {
+            this.categoryModel.init(); //inicjalizacja listy w ComboBox
+        } catch (ApplicationException e) {
+            DialogsUtils.errorDialog(e.getMessage());
+        }
         this.categoryComboBox.setItems(this.categoryModel.getCategoryFXObservableList()); //ustawienie listy
         initBindings();
 
@@ -40,13 +45,21 @@ public class CategoryController {
 
     }
 
-    public void addCategoryOnAction() {
-        categoryModel.saveCategoryInDataBase(categoryTextField.getText());
+    public void addCategoryOnAction()   {
+        try {
+            categoryModel.saveCategoryInDataBase(categoryTextField.getText());
+        } catch (ApplicationException e) {
+            DialogsUtils.errorDialog(e.getMessage());
+        }
         categoryTextField.clear();
     }
 
     public void onActionDeleteButton() {
-        this.categoryModel.deleteCategoryByID();
+        try {
+            this.categoryModel.deleteCategoryByID();
+        } catch (ApplicationException e) {
+            DialogsUtils.errorDialog(e.getMessage());
+        }
     }
 
     public void onActionComboBox() {
@@ -55,13 +68,17 @@ public class CategoryController {
         //pobiera to co zostało wybrane w ComboBox i dodaje to do listy propertiesów
     }
 
-    public void onActionEditButton() {
+    public void onActionEditButton()  {
         //Tworzymy okienko, które zawiera starą wartość z listy
         String newCategoryName = DialogsUtils.editDialog(this.categoryModel.getCategoryFXObjectProperty().getName());
         //po naciśnięciu:
         if (newCategoryName != null) {
             this.categoryModel.getCategoryFXObjectProperty().setName(newCategoryName);
-            this.categoryModel.updateCategoryInDataBase();
+            try {
+                this.categoryModel.updateCategoryInDataBase();
+            } catch (ApplicationException e) {
+                DialogsUtils.errorDialog(e.getMessage());
+            }
         }
     }
 }
