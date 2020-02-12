@@ -16,7 +16,10 @@ public class Author implements BaseModel{
     private int id;
 
     @DatabaseField(columnName = "NAME", canBeNull = false)
-    private String nameAndSurname;
+    private String name;
+
+    @DatabaseField(columnName = "SURNAME", canBeNull = false)
+    private String surname;
 
     @ForeignCollectionField(eager = true) //eager - zmiana pobierania z leniwego 'lazy' na eager.
     //od razu będzie dociąga całą kolekcję, w trybie lazy będzie czekał na konkretne zapytanie
@@ -31,12 +34,20 @@ public class Author implements BaseModel{
         this.id = id;
     }
 
-    public String getNameAndSurname() {
-        return nameAndSurname;
+    public String getName() {
+        return name;
     }
 
-    public void setNameAndSurname(String name) {
-        this.nameAndSurname = name;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public ForeignCollection<Book> getBooks() {
@@ -51,7 +62,8 @@ public class Author implements BaseModel{
     public String toString() {
         return "Author{" +
                 "id=" + id +
-                ", name='" + nameAndSurname + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", books=" + books +
                 '}';
     }

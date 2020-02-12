@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pl.my.library.datbase.dbutils.DbManager;
+import pl.my.library.utils.FillDatabase;
 import pl.my.library.utils.FxmlUtils;
 
 import java.util.Locale;
@@ -31,5 +32,6 @@ public class Main extends Application {
         stage.show();
 
         DbManager.initDatabase();
+        FillDatabase.fillDatabase();
     }
 }

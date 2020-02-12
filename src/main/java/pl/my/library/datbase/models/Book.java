@@ -16,6 +16,10 @@ public class Book implements BaseModel {
     }
 
     // TWORZYMY POLE OBCE
+
+    @DatabaseField(generatedId = true)
+    private int id;
+
     @DatabaseField(columnName = "AUTHOR_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
     private Author author;
 
@@ -34,14 +38,15 @@ public class Book implements BaseModel {
     @DatabaseField(columnName = "RELEASE_DATE")
     private Date releaseDate;
 
-    @DatabaseField(columnName = "ISBN", unique = true, width = 1) //zawsze unikalne elementy
-    private String isbn;
+    @DatabaseField(columnName = "ISBN",  width = 1) //unique = true,  zawsze unikalne elementy
+    private long isbn;
 
-    //    @DatabaseField(columnName = "DESCRIPTION", dataType = DataType.LONG_STRING) //dla Stringów powyżej 256 znaków
-//    private String description;
+    @DatabaseField(columnName = "DESCRIPTION", dataType = DataType.LONG_STRING) //dla Stringów powyżej 256 znaków
+    private String description;
+
     @DatabaseField(columnName = "RATING", width = 1)
     //maksymalna ilość znaków (nie działa np. na sqlite, ale na h2 działa)
-    private String rating;
+    private int rating;
 
 
     @DatabaseField(columnName = "ADDED_DATE")
@@ -63,19 +68,27 @@ public class Book implements BaseModel {
         this.title = title;
     }
 
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
+    public String getDescription() {
+        return description;
+    }
 
-    public String getIsbn() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
@@ -95,30 +108,13 @@ public class Book implements BaseModel {
         this.releaseDate = releaseDate;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
-
-//    public boolean isBorrowed() {
-//        return borrowed;
-//    }
-//
-//    public void setBorrowed(boolean borrowed) {
-//        this.borrowed = borrowed;
-//    }
-//
-//    public double getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(double price) {
-//        this.price = price;
-//    }
-
 
     public Author getAuthor() {
         return author;
@@ -135,4 +131,20 @@ public class Book implements BaseModel {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    //    public boolean isBorrowed() {
+//        return borrowed;
+//    }
+//
+//    public void setBorrowed(boolean borrowed) {
+//        this.borrowed = borrowed;
+//    }
+//
+//    public double getPrice() {
+//        return price;
+//    }
+//
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
 }
