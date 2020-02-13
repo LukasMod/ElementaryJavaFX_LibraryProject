@@ -22,19 +22,16 @@ public class TopMenuButtonsController {
 
     @FXML
     public void openLibrary() {
-        System.out.println("openLibrary");
         mainController.setCenter(LIBRARY_FXML);
     }
 
     @FXML
     public void openListBooks() {
-        System.out.println("openListBooks");
         mainController.setCenter(LIST_BOOKS_FXML);
     }
 
     @FXML
     public void openStats() {
-        System.out.println("openStats");
         mainController.setCenter(STATS_FXML);
     }
 
@@ -45,27 +42,22 @@ public class TopMenuButtonsController {
         mainController.setCenter(ADD_BOOK_FXML);
     }
 
+    public void setMainController(MainController mainController) { this.mainController = mainController; }
+    @FXML
+    public void addCategory() {
+        resetToggleButtons();
+        mainController.setCenter(ADD_CATEGORY_FXML);
+    }
+    @FXML
+    public void addAuthor() {
+        resetToggleButtons();
+        mainController.setCenter(ADD_AUTHOR_FXML);
+    }
+
     private void resetToggleButtons() {
         if (toggleButtons.getSelectedToggle() != null) {   //sprawdza czy w grupie jest coś wybrane
             toggleButtons.getSelectedToggle().setSelected(false); //jeśli tak, to ustawiamy na 'niewybrany'
         }
     }
 
-
-    public TopMenuButtonsController setMainController(MainController mainController) {
-        this.mainController = mainController;
-        return this;
-    }
-
-    public void addCategory() {
-        resetToggleButtons();
-        System.out.println("addCategory");
-        mainController.setCenter(ADD_CATEGORY_FXML);
-    }
-
-    public void addAuthor() {
-        resetToggleButtons();
-        System.out.println("addAuthor");
-        mainController.setCenter(ADD_AUTHOR_FXML);
-    }
 }
