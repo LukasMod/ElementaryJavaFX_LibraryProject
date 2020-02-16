@@ -1,9 +1,8 @@
 package pl.my.library.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pl.my.library.modelFX.CategoryFX;
+import pl.my.library.modelFX.CategoryFx;
 import pl.my.library.modelFX.CategoryModel;
 import pl.my.library.utils.DialogsUtils;
 import pl.my.library.utils.exceptions.ApplicationException;
@@ -19,7 +18,7 @@ public class CategoryController {
     @FXML
     private TextField categoryTextField;
     @FXML
-    private ComboBox<CategoryFX> categoryComboBox;
+    private ComboBox<CategoryFx> categoryComboBox;
 
     @FXML
     private TreeView<String> categoryTreeView;
@@ -34,7 +33,7 @@ public class CategoryController {
         } catch (ApplicationException e) {
             DialogsUtils.errorDialog(e.getMessage());
         }
-        this.categoryComboBox.setItems(this.categoryModel.getCategoryFXObservableList()); //ustawienie listy
+        this.categoryComboBox.setItems(this.categoryModel.getCategoryFxObservableList()); //ustawienie listy
         this.categoryTreeView.setRoot(this.categoryModel.getRoot());
         initBindings();
 

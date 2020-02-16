@@ -19,29 +19,29 @@ public class CategoryModel {
 
 
     //wypełniamy comboBox danymi
-    private ObservableList<CategoryFX> categoryFXObservableList = FXCollections.observableArrayList();
-    // categoryFXObservableList będzie podłączone do ComboBox
+    private ObservableList<CategoryFx> categoryFxObservableList = FXCollections.observableArrayList();
+    // categoryFxObservableList będzie podłączone do ComboBox
 
-    private ObjectProperty<CategoryFX> categoryFXObjectProperty = new SimpleObjectProperty<>();
+    private ObjectProperty<CategoryFx> categoryFXObjectProperty = new SimpleObjectProperty<>();
     //Będzie przetrzymywał obecnie wybrany element w ComboBox
 
     private TreeItem<String> root = new TreeItem<>();
     //TreeView posiada TreeItemy
 
 
-    public ObservableList<CategoryFX> getCategoryFXObservableList() {
-        return categoryFXObservableList;
+    public ObservableList<CategoryFx> getCategoryFxObservableList() {
+        return categoryFxObservableList;
     }
 
-    public void setCategoryFXObservableList(ObservableList<CategoryFX> categoryFXObservableList) {
-        this.categoryFXObservableList = categoryFXObservableList;
+    public void setCategoryFxObservableList(ObservableList<CategoryFx> categoryFxObservableList) {
+        this.categoryFxObservableList = categoryFxObservableList;
     }
 
-    public CategoryFX getCategoryFXObjectProperty() {
+    public CategoryFx getCategoryFXObjectProperty() {
         return categoryFXObjectProperty.get();
     }
 
-    public ObjectProperty<CategoryFX> categoryFXObjectPropertyProperty() {
+    public ObjectProperty<CategoryFx> categoryFXObjectPropertyProperty() {
         return categoryFXObjectProperty;
     }
 
@@ -54,11 +54,11 @@ public class CategoryModel {
     }
 
 
-    public void setCategoryFXObjectProperty(CategoryFX categoryFXObjectProperty) {
-        this.categoryFXObjectProperty.set(categoryFXObjectProperty);
+    public void setCategoryFXObjectProperty(CategoryFx categoryFxObjectProperty) {
+        this.categoryFXObjectProperty.set(categoryFxObjectProperty);
     }
 
-    //metoda wypełniająca categoryFXObservableList
+    //metoda wypełniająca categoryFxObservableList
     public void init() throws ApplicationException {
         //połączenie do bazy danych
         CategoryDao categoryDao = new CategoryDao();
@@ -89,10 +89,10 @@ public class CategoryModel {
     }
 
     private void initCategoryList(List<Category> categoryList) {
-        this.categoryFXObservableList.clear();
+        this.categoryFxObservableList.clear();
         categoryList.forEach(c -> {
-            CategoryFX categoryFX = ConverterCategory.convertToCategoryFX(c);
-            this.categoryFXObservableList.add(categoryFX);
+            CategoryFx categoryFX = ConverterCategory.convertToCategoryFX(c);
+            this.categoryFxObservableList.add(categoryFX);
         });
     }
 
