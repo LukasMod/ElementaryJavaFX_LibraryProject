@@ -46,6 +46,14 @@ public class AuthorModel {
         saveOrUpdate(this.getAuthorFxObjectPropertyEdit());
     }
 
+    public void deleteAuthorInDatabase() throws ApplicationException {
+        AuthorDao authorDao = new AuthorDao();
+        authorDao.deleteById(Author.class, this.getAuthorFxObjectPropertyEdit().getId());
+        DbManager.closeConnectionSource();
+        this.init();
+    }
+
+
     private void saveOrUpdate(AuthorFx authorFxObjectPropertyEdit) throws ApplicationException {
         AuthorDao authorDao = new AuthorDao();
         Author author = ConverterAuthor.convertToAuthor(authorFxObjectPropertyEdit);
