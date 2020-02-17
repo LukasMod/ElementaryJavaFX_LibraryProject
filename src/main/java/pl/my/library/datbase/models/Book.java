@@ -38,8 +38,8 @@ public class Book implements BaseModel {
     @DatabaseField(columnName = "RELEASE_DATE")
     private Date releaseDate;
 
-    @DatabaseField(columnName = "ISBN",  width = 1) //unique = true,  zawsze unikalne elementy
-    private long isbn;
+    @DatabaseField(columnName = "ISBN") //unique = true,  zawsze unikalne elementy
+    private String isbn;
 
     @DatabaseField(columnName = "DESCRIPTION", dataType = DataType.LONG_STRING) //dla Stringów powyżej 256 znaków
     private String description;
@@ -84,13 +84,9 @@ public class Book implements BaseModel {
         this.description = description;
     }
 
-    public long getIsbn() {
-        return isbn;
-    }
+    public String getIsbn() { return isbn; }
 
-    public void setIsbn(long isbn) {
-        this.isbn = isbn;
-    }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
 
     public Date getAddedDate() {
         return addedDate;
