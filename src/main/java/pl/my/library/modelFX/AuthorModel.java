@@ -31,7 +31,6 @@ public class AuthorModel {
             AuthorFx authorFX  = ConverterAuthor.convertToAuthorFx(author);
             this.authorFxObservableList.add(authorFX);
         });
-        DbManager.closeConnectionSource();
     }
 
 
@@ -49,7 +48,6 @@ public class AuthorModel {
     public void deleteAuthorInDatabase() throws ApplicationException {
         AuthorDao authorDao = new AuthorDao();
         authorDao.deleteById(Author.class, this.getAuthorFxObjectPropertyEdit().getId());
-        DbManager.closeConnectionSource();
         this.init();
     }
 
@@ -58,7 +56,6 @@ public class AuthorModel {
         AuthorDao authorDao = new AuthorDao();
         Author author = ConverterAuthor.convertToAuthor(authorFxObjectPropertyEdit);
         authorDao.createOrUpdate(author);
-        DbManager.closeConnectionSource();
         this.init();
     }
 

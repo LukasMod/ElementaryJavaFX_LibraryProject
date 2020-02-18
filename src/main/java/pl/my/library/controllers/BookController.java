@@ -1,9 +1,7 @@
 package pl.my.library.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pl.my.library.datbase.models.Book;
 import pl.my.library.modelFX.AuthorFx;
 import pl.my.library.modelFX.BookModel;
 import pl.my.library.modelFX.CategoryFx;
@@ -59,6 +57,10 @@ public class BookController {
 
 
     public void addBookOnAction() {
-        System.out.println(this.bookModel.getBookFxObjectProperty().toString());
+        try {
+            this.bookModel.saveBookInDatabase();
+        } catch (ApplicationException e) {
+            DialogsUtils.errorDialog(e.getMessage());
+        }
     }
 }

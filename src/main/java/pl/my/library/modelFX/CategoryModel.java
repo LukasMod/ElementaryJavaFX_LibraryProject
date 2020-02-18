@@ -67,7 +67,6 @@ public class CategoryModel {
         //w pętli, po naszych kategoriach z bazy danych, musimy dodac każdą kategorię do categoryfxlist
         initCategoryList(categoryList);
         initRoot(categoryList);
-        DbManager.closeConnectionSource();
     }
 
     //każda kategoria będzie 1 tree itemem dla tego roota
@@ -99,7 +98,6 @@ public class CategoryModel {
     public void deleteCategoryByID() throws ApplicationException {
         CategoryDao categoryDao = new CategoryDao(); //połączenie z bazą danych
         categoryDao.deleteById(Category.class, categoryFXObjectProperty.getValue().getId()); //usuwa z bazy danych
-        DbManager.closeConnectionSource();
         init(); //czyści listę i od nowa pobiera z bazy danych
     }
 
@@ -112,7 +110,6 @@ public class CategoryModel {
         Category category = new Category();
         category.setName(name);
         categoryDao.createOrUpdate(category);
-        DbManager.closeConnectionSource();
         init();
 
     }
@@ -123,9 +120,6 @@ public class CategoryModel {
         Category tempCategory = categoryDao.findById(Category.class, getCategoryFXObjectProperty().getId());
         tempCategory.setName(getCategoryFXObjectProperty().getName());
         categoryDao.createOrUpdate(tempCategory);
-        DbManager.closeConnectionSource();
         init();
-
-
     }
 }
