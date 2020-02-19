@@ -46,8 +46,8 @@ public class BookController {
 
 
         //Propertki dla każdej pozycji
-        this.bookModel.getBookFxObjectProperty().categoryFxObjectPropertyProperty().bind(this.categoryComboBox.valueProperty());
-        this.bookModel.getBookFxObjectProperty().authorFxObjectPropertyProperty().bind(this.authorComboBox.valueProperty());
+        this.bookModel.getBookFxObjectProperty().categoryFxObjectProperty().bind(this.categoryComboBox.valueProperty());
+        this.bookModel.getBookFxObjectProperty().authorFxObjectProperty().bind(this.authorComboBox.valueProperty());
         this.bookModel.getBookFxObjectProperty().titleProperty().bind(this.titleTextField.textProperty());
         this.bookModel.getBookFxObjectProperty().descriptionProperty().bind(this.descriptionTextArea.textProperty());
         this.bookModel.getBookFxObjectProperty().ratingProperty().bind(this.ratingSlider.valueProperty());

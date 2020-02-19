@@ -26,6 +26,7 @@ public class FillDatabase {
         book1.setRating(4);
         book1.setReleaseDate(new Date());
         book1.setAddedDate(new Date());
+        book1.setDescription("Super");
 
 
         Category category2 = new Category();
@@ -52,6 +53,7 @@ public class FillDatabase {
         book2.setRating(5);
         book2.setReleaseDate(new Date());
         book2.setAddedDate(new Date());
+        book2.setDescription("Jeszcze lepsze");
 
         Category category4 = new Category();
         category4.setName("Fantastyka");
@@ -66,6 +68,7 @@ public class FillDatabase {
         book3.setRating(5);
         book3.setReleaseDate(new Date());
         book3.setAddedDate(new Date());
+        book3.setDescription("Najlepsze");
 
         Author author4 = new Author();
         author4.setName("Terry ");
@@ -78,6 +81,7 @@ public class FillDatabase {
         book4.setRating(3);
         book4.setReleaseDate(new Date());
         book4.setAddedDate(new Date());
+        book4.setDescription("Słabe");
 
         BookDao bookDao = new BookDao();
         try {

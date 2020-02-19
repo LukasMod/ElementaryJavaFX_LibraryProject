@@ -34,7 +34,7 @@ public class BookFx {
         return categoryFxObjectProperty.get();
     }
 
-    public ObjectProperty<CategoryFx> categoryFxObjectPropertyProperty() {
+    public ObjectProperty<CategoryFx> categoryFxObjectProperty() {
         return categoryFxObjectProperty;
     }
 
@@ -46,7 +46,7 @@ public class BookFx {
         return authorFxObjectProperty.get();
     }
 
-    public ObjectProperty<AuthorFx> authorFxObjectPropertyProperty() {
+    public ObjectProperty<AuthorFx> authorFxObjectProperty() {
         return authorFxObjectProperty;
     }
 
