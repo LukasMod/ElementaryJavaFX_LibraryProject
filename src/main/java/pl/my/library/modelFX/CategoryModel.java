@@ -5,12 +5,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+import pl.my.library.datbase.dao.BookDao;
 import pl.my.library.datbase.dao.CategoryDao;
-import pl.my.library.datbase.dbutils.DbManager;
+import pl.my.library.datbase.models.Book;
 import pl.my.library.datbase.models.Category;
 import pl.my.library.utils.converters.ConverterCategory;
 import pl.my.library.utils.exceptions.ApplicationException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 //oddziela bazę danych od fx, będzie obsługiwać kontroller - logika MVC
@@ -78,7 +80,7 @@ public class CategoryModel {
             TreeItem<String> categoryItem = new TreeItem<>(c.getName());
 
             //pętla dodająca książki do listy kategorii w treeView
-            c.getBooks().forEach(b->{
+            c.getBooks().forEach(b -> {
                 categoryItem.getChildren().add(new TreeItem<>(b.getTitle()));
             });
 
@@ -95,9 +97,12 @@ public class CategoryModel {
         });
     }
 
-    public void deleteCategoryByID() throws ApplicationException {
+    public void deleteCategoryByID() throws ApplicationException, SQLException {
         CategoryDao categoryDao = new CategoryDao(); //połączenie z bazą danych
         categoryDao.deleteById(Category.class, categoryFXObjectProperty.getValue().getId()); //usuwa z bazy danych
+        BookDao bookDao = new BookDao();
+        bookDao.deleteByColumnName(Book.CATEGORY_ID, categoryFXObjectProperty.getValue().getId());
+
         init(); //czyści listę i od nowa pobiera z bazy danych
     }
 

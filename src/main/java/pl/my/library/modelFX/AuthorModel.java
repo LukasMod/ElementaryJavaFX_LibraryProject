@@ -5,11 +5,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pl.my.library.datbase.dao.AuthorDao;
+import pl.my.library.datbase.dao.BookDao;
 import pl.my.library.datbase.dbutils.DbManager;
 import pl.my.library.datbase.models.Author;
+import pl.my.library.datbase.models.Book;
 import pl.my.library.utils.converters.ConverterAuthor;
 import pl.my.library.utils.exceptions.ApplicationException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class AuthorModel {
@@ -45,9 +48,11 @@ public class AuthorModel {
         saveOrUpdate(this.getAuthorFxObjectPropertyEdit());
     }
 
-    public void deleteAuthorInDatabase() throws ApplicationException {
+    public void deleteAuthorInDatabase() throws ApplicationException, SQLException {
         AuthorDao authorDao = new AuthorDao();
         authorDao.deleteById(Author.class, this.getAuthorFxObjectPropertyEdit().getId());
+        BookDao bookDao = new BookDao();
+        bookDao.deleteByColumnName(Book.AUTHOR_ID, this.getAuthorFxObjectPropertyEdit().getId());
         this.init();
     }
 

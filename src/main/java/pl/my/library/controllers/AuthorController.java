@@ -9,6 +9,8 @@ import pl.my.library.modelFX.AuthorModel;
 import pl.my.library.utils.DialogsUtils;
 import pl.my.library.utils.exceptions.ApplicationException;
 
+import java.sql.SQLException;
+
 public class AuthorController {
 
 
@@ -109,7 +111,7 @@ public class AuthorController {
     public void deleteAuthorOnAction() {
         try {
             this.authorModel.deleteAuthorInDatabase();
-        } catch (ApplicationException e) {
+        } catch (ApplicationException | SQLException e) {
             DialogsUtils.errorDialog(e.getMessage());
         }
 

@@ -11,6 +11,9 @@ import java.util.Date;
 public class Book implements BaseModel {
 
 
+    public static final String AUTHOR_ID = "AUTHOR_ID";
+    public static final String CATEGORY_ID = "CATEGORY_ID";
+
     //bezparametrowy konstruktor Alt+Insert
     public Book() {
     }
@@ -20,10 +23,10 @@ public class Book implements BaseModel {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(columnName = "AUTHOR_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
+    @DatabaseField(columnName = AUTHOR_ID, foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
     private Author author;
 
-    @DatabaseField(columnName = "CATEGORY_ID", foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
+    @DatabaseField(columnName = CATEGORY_ID, foreign = true, foreignAutoCreate = true, foreignAutoRefresh = true, canBeNull = false)
     private Category category;
 
     //utworzy się kolumna z nazwą author_id. Lepiej nazwąć jawną naze, aby uniknąć pomyłek

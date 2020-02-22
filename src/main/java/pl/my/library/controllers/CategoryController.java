@@ -1,11 +1,16 @@
 package pl.my.library.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeView;
 import pl.my.library.modelFX.CategoryFx;
 import pl.my.library.modelFX.CategoryModel;
 import pl.my.library.utils.DialogsUtils;
 import pl.my.library.utils.exceptions.ApplicationException;
+
+import java.sql.SQLException;
 
 public class CategoryController {
 
@@ -46,7 +51,7 @@ public class CategoryController {
 
     }
 
-    public void addCategoryOnAction()   {
+    public void addCategoryOnAction() {
         try {
             categoryModel.saveCategoryInDataBase(categoryTextField.getText());
         } catch (ApplicationException e) {
@@ -58,7 +63,7 @@ public class CategoryController {
     public void onActionDeleteButton() {
         try {
             this.categoryModel.deleteCategoryByID();
-        } catch (ApplicationException e) {
+        } catch (ApplicationException | SQLException e) {
             DialogsUtils.errorDialog(e.getMessage());
         }
     }
@@ -69,7 +74,7 @@ public class CategoryController {
         //pobiera to co zostało wybrane w ComboBox i dodaje to do listy propertiesów
     }
 
-    public void onActionEditButton()  {
+    public void onActionEditButton() {
         //Tworzymy okienko, które zawiera starą wartość z listy
         String newCategoryName = DialogsUtils.editDialog(this.categoryModel.getCategoryFXObjectProperty().getName());
         //po naciśnięciu:
