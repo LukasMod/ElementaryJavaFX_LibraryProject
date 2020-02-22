@@ -24,11 +24,17 @@ public class FxmlUtils {
         FXMLLoader loader = new FXMLLoader(FxmlUtils.class.getResource(fxmlPath));
         loader.setResources(getResourceBundle());
         try {
-            return loader.load();
+            return loader.load(); //zwraca załadowana formatkę, w tym przypadku Pane
         } catch (Exception e) {
             DialogsUtils.errorDialog(e.getMessage());
         }
         return null;
+    }
+
+    public static FXMLLoader getLoader(String fxmlPath) {
+        FXMLLoader loader = new FXMLLoader(FxmlUtils.class.getResource(fxmlPath));
+        loader.setResources(getResourceBundle());
+        return loader;   //zwraca całego loadera, nie tylko Pane, jak wyżej (potem można wyciągnąc z tego Controller)
     }
 
     public static ResourceBundle getResourceBundle() {

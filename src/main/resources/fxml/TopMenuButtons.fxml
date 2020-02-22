@@ -10,33 +10,17 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.my.library.controllers.TopMenuButtonsController">
    <children>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openLibrary" prefHeight="80.0" prefWidth="120.0" text="%library">
-         <toggleGroup>
-            <ToggleGroup fx:id="toggleButtons" />
-         </toggleGroup>
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/library.png" />
-               </image>
-            </ImageView>
-         </graphic></ToggleButton>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openListBooks" prefHeight="80.0" prefWidth="120.0" text="%list.books" toggleGroup="$toggleButtons">
+      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openListBooks" prefHeight="80.0" prefWidth="120.0" text="%list.books">
          <graphic>
             <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/lists.png" />
                </image>
             </ImageView>
-         </graphic></ToggleButton>
-      <ToggleButton contentDisplay="TOP" mnemonicParsing="false" onAction="#openStats" prefHeight="80.0" prefWidth="120.0" text="%stats" toggleGroup="$toggleButtons">
-         <graphic>
-            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/stats.png" />
-               </image>
-            </ImageView>
-         </graphic></ToggleButton>
+         </graphic>
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleButtons" />
+         </toggleGroup></ToggleButton>
       <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBook" prefHeight="80.0" prefWidth="120.0" text="%addBook">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">

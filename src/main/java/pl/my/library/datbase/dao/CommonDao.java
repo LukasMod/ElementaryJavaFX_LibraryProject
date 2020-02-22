@@ -47,8 +47,7 @@ public abstract class CommonDao {
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.refresh"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
@@ -61,8 +60,7 @@ public abstract class CommonDao {
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.delete"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
@@ -74,8 +72,7 @@ public abstract class CommonDao {
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.delete"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
@@ -88,8 +85,7 @@ public abstract class CommonDao {
         } catch (SQLException | ApplicationException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.not.found"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
@@ -103,8 +99,7 @@ public abstract class CommonDao {
         } catch (SQLException | ApplicationException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.not.found.all"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
@@ -117,8 +112,7 @@ public abstract class CommonDao {
         } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
             throw new ApplicationException(FxmlUtils.getResourceBundle().getString("error.get.dao"));
-        }
-        finally {
+        } finally {
             this.closeDbConnection();
         }
     }
