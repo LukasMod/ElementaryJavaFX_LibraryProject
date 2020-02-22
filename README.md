@@ -1,8 +1,7 @@
 # ElementaryJavaFX_LibraryProject
 Small Library App for training javaFX. Design Pattern - MVC
-J13
-JFX13
-Maven
+
+J13  JFX13  Maven
 
 Based on tutorial from  https://github.com/ZacznijProgramowac  
 https://www.youtube.com/ZacznijProgramowac
